@@ -1,0 +1,1220 @@
+{
+    "meta": {
+        "version": "3.5.0",
+        "report_json_url": "https://raw.githubusercontent.com/eosc-synergy/swordv3.assess.sqaaas/main/.report/assessment_output.json",
+        "report_permalink": "https://sqaaas.eosc-synergy.eu/full-assessment/report/https://raw.githubusercontent.com/eosc-synergy/swordv3.assess.sqaaas/main/.report/assessment_output.json",
+        "timestamp": 1793874738.3318732
+    },
+    "repository": [
+        {
+            "url": "https://github.com/munipress/swordv3",
+            "name": "munipress/swordv3",
+            "tag": "main",
+            "commit_id": "fe39d297056ec1e7299525ee4a20dffae213f7cb",
+            "is_main_repo": true,
+            "avatar_url": "https://avatars.githubusercontent.com/u/54404687?v=4",
+            "description": null,
+            "languages": null,
+            "topics": null,
+            "badge_status": "no_badge"
+        }
+    ],
+    "report": {
+        "QC.Acc": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Acc01": {
+                    "description": "Is the source code managed with a Version Control System?",
+                    "requirement_level": "MUST",
+                    "hint": "The source code shall be managed with Git and remain publicly available for this criterion to be successful. Please check <a href=\"https://git-scm.com/book/es/v2\" target=\"_blank\">Pro Git</a> docs about how to get started using Git tool. Guidelines provided by the most popular social coding platforms (<a href=\"https://docs.github.com/get-started\" target=\"_blank\">GitHub</a>, <a href=\"https://about.gitlab.com/get-started/\" target=\"_blank\">GitLab</a>) are also a good starting point",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Source code uses Git for version control",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-boolean",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "git",
+                                "lang": "scm",
+                                "version": "2.34.1",
+                                "docker": {
+                                    "image": "bitnami/git:2.34.1",
+                                    "reviewed": "2021-12-30"
+                                },
+                                "ci": {
+                                    "name": "QC.Acc github.com/munipress/swordv3 git",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "git rev-parse --is-inside-work-tree "
+                                    ],
+                                    "stdout_text": "true",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/swordv3.assess.sqaaas/job/main/1/execution/node/34/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/swordv3.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 1,
+                "success_subcriteria": 1
+            }
+        },
+        "QC.Doc": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Doc06.1": {
+                    "description": "Is the software scope outlined in the code repository?",
+                    "requirement_level": "MUST",
+                    "hint": "A README file presents your software to the audience interested in your software project. Several online sites simplify the task of creating the README file, such as <a href=\"https://www.makeareadme.com/\" target=\"_blank\">Make a README</a> or <a href=\"https://readme.so/\" target=\"_blank\">readme.so</a> sites. Be sure to add it to the code repository's root path",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "A README file not present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc github.com/munipress/swordv3 find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/swordv3.assess.sqaaas/job/main/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/swordv3.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": true
+                },
+                "QC.Doc06.3": {
+                    "description": "Does the project establish a code of conduct for its participants?",
+                    "requirement_level": "MUST",
+                    "hint": "A CODE_OF_CONDUCT file sets the path for a constructive, respectful and positive atmosphere among all the contributors in your software project. Of course you can define your own, but in case you want to rely on external and widely-adopted code of conducts check out some of the most popular ones: <a href=\"https://contributor-covenant.org/\" target=\"_blank\">Contributor Covenant</a> or <a href=\"https://web.archive.org/web/20200330154000/http://citizencodeofconduct.org/\" target=\"_blank\">Citizen Code of Conduct</a>",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "A CODE_OF_CONDUCT file is not present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc github.com/munipress/swordv3 find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/swordv3.assess.sqaaas/job/main/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/swordv3.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": true
+                },
+                "QC.Doc06.2": {
+                    "description": "Is there a clear path or guidelines on how to contribute to the code?",
+                    "requirement_level": "MUST",
+                    "hint": "A CONTRIBUTING file shall be present in the root path of the code repository describing the expected workflow to follow when adding contributions. Please check <a href=\"https://mozillascience.github.io/working-open-workshop/contributing/\" target=\"_blank\">Mozilla's guidelines</a> and <a href=\"https://github.com/github/docs/blob/main/CONTRIBUTING.md\" target=\"_blank\">GitHub's CONTRIBUTING.md example</a> to get inspired on how to write a good CONTRIBUTING file",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "A CONTRIBUTING file is not present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc github.com/munipress/swordv3 find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/swordv3.assess.sqaaas/job/main/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/swordv3.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": true
+                },
+                "QC.Doc01.1": {
+                    "description": "Are docs managed in the same repository as code?",
+                    "requirement_level": "MAY",
+                    "hint": "This subcriterion will succeed if the documentation files exist on the same repository as the source code, e.g. under a <code>docs/</code> folder",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Documentation resides in the same repository as code",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-boolean",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "git",
+                                "lang": null,
+                                "version": null,
+                                "docker": null,
+                                "ci": {
+                                    "name": "QC.Doc github.com/munipress/swordv3 git",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "git rev-parse --is-inside-work-tree "
+                                    ],
+                                    "stdout_text": "true",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/swordv3.assess.sqaaas/job/main/1/execution/node/52/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/swordv3.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Doc02.X": {
+                    "description": "Are docs following a style for the Markdown markup language?",
+                    "requirement_level": "MAY",
+                    "hint": "When using a docs-as-code approach, the style of the markup language is being checked. SQAaaS relies on <a href=\"https://github.com/markdownlint/markdownlint/\" target=\"_blank\">markdownlint</a> for Markdown files and <a href=\"https://github.com/twolfson/restructuredtext-lint/\" target=\"_blank\">restructuredtext-lint</a> for reStructuredText",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Docs are not fully compliant with markdownlint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-markdownlint",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "markdownlint",
+                                "lang": "Markdown",
+                                "version": "0.11.0",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/markdownlint/Dockerfile",
+                                    "reviewed": "1970-01-01"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc github.com/munipress/swordv3 markdownlint",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "mdl --json  ."
+                                    ],
+                                    "stdout_text": "[{\"filename\":\"./readme.md\",\"line\":50,\"rule\":\"MD012\",\"aliases\":[\"no-multiple-blanks\"],\"description\":\"Multiple consecutive blank lines\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md012---multiple-consecutive-blank-lines\"},{\"filename\":\"./readme.md\",\"line\":24,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./readme.md\",\"line\":26,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./readme.md\",\"line\":28,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./readme.md\",\"line\":36,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./readme.md\",\"line\":38,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./readme.md\",\"line\":40,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./readme.md\",\"line\":41,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./readme.md\",\"line\":44,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./readme.md\",\"line\":48,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./readme.md\",\"line\":74,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./readme.md\",\"line\":75,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./readme.md\",\"line\":76,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./readme.md\",\"line\":77,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length\"},{\"filename\":\"./readme.md\",\"line\":31,\"rule\":\"MD029\",\"aliases\":[\"ol-prefix\"],\"description\":\"Ordered list item prefix\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md029---ordered-list-item-prefix\"},{\"filename\":\"./readme.md\",\"line\":32,\"rule\":\"MD029\",\"aliases\":[\"ol-prefix\"],\"description\":\"Ordered list item prefix\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md029---ordered-list-item-prefix\"},{\"filename\":\"./readme.md\",\"line\":39,\"rule\":\"MD029\",\"aliases\":[\"ol-prefix\"],\"description\":\"Ordered list item prefix\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md029---ordered-list-item-prefix\"},{\"filename\":\"./readme.md\",\"line\":40,\"rule\":\"MD029\",\"aliases\":[\"ol-prefix\"],\"description\":\"Ordered list item prefix\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md029---ordered-list-item-prefix\"},{\"filename\":\"./readme.md\",\"line\":41,\"rule\":\"MD029\",\"aliases\":[\"ol-prefix\"],\"description\":\"Ordered list item prefix\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md029---ordered-list-item-prefix\"},{\"filename\":\"./readme.md\",\"line\":42,\"rule\":\"MD029\",\"aliases\":[\"ol-prefix\"],\"description\":\"Ordered list item prefix\",\"docs\":\"https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md029---ordered-list-item-prefix\"}]",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/swordv3.assess.sqaaas/job/main/1/execution/node/61/log?consoleFull"
+                                },
+                                "level": "RECOMMENDED",
+                                "build_repo": "https://github.com/eosc-synergy/swordv3.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "./readme.md": {
+                                    "MD012": {
+                                        "description": "Multiple consecutive blank lines",
+                                        "line": [
+                                            50
+                                        ]
+                                    },
+                                    "MD013": {
+                                        "description": "Line length",
+                                        "line": [
+                                            24,
+                                            26,
+                                            28,
+                                            36,
+                                            38,
+                                            40,
+                                            41,
+                                            44,
+                                            48,
+                                            74,
+                                            75,
+                                            76,
+                                            77
+                                        ]
+                                    },
+                                    "MD029": {
+                                        "description": "Ordered list item prefix",
+                                        "line": [
+                                            31,
+                                            32,
+                                            39,
+                                            40,
+                                            41,
+                                            42
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 20,
+                "total_subcriteria": 5,
+                "success_subcriteria": 1
+            }
+        },
+        "QC.Lic": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Lic01": {
+                    "description": "Is code licensed to be freely used, modified and distributed by others?",
+                    "requirement_level": "MUST",
+                    "hint": "<p>Your source code repository shall be distributed under an open source license for this subcriterion to pass successfully. Be sure to have a license file present in the code repository matching the name <code>LICENSE</code> with optional extensions (depending on the format used): <code>[.md|.rst|.txt]</code>.</p><p>Valid licenses are any of those approved either by the <a href=\"https://opensource.org/licenses\" target=\"_blank\">Open Source Initiative</a> and/or the Free Software Foundation <a href=\"https://www.gnu.org/licenses/license-list.html\" target=\"_blank\"></a>. You can also check the <a href=\"https://choosealicense.com/\" target=\"_blank\">choosealicense.com</a> site</p>",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "An Open Source license found in the code repository: ISC",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic github.com/munipress/swordv3 licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json "
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"isc\",\"spdx_id\":\"ISC\",\"meta\":{\"title\":\"ISC License\",\"source\":\"https://spdx.org/licenses/ISC.html\",\"description\":\"A permissive license lets people do anything with your code with proper attribution and without warranty. The ISC license is functionally equivalent to the <a href=\\\"/licenses/bsd-2-clause/\\\">BSD 2-Clause</a> and <a href=\\\"/licenses/mit/\\\">MIT</a> licenses, removing some language that is no longer necessary.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Starship\":\"https://github.com/starship/starship/blob/master/LICENSE\",\"Node.js semver\":\"https://github.com/npm/node-semver/blob/master/LICENSE\",\"OpenStreetMap iD\":\"https://github.com/openstreetmap/iD/blob/develop/LICENSE.md\"},\"featured\":false,\"hidden\":true,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/isc/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"package.json\",\"content\":\"{\\n  \\\"name\\\": \\\"swordv3\\\",\\n  \\\"version\\\": \\\"1.0.0\\\",\\n  \\\"description\\\": \\\"OJS plugin to deposit articles in a SWORDv3 service.\\\",\\n  \\\"main\\\": \\\"index.js\\\",\\n  \\\"scripts\\\": {\\n    \\\"dev\\\": \\\"vite build --watch --minify=false\\\",\\n    \\\"build\\\": \\\"vite build\\\",\\n    \\\"lint\\\": \\\"eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore\\\"\\n  },\\n  \\\"repository\\\": {\\n    \\\"type\\\": \\\"git\\\",\\n    \\\"url\\\": \\\"git+https://github.com/NateWr/swordv3.git\\\"\\n  },\\n  \\\"keywords\\\": [],\\n  \\\"author\\\": \\\"\\\",\\n  \\\"license\\\": \\\"ISC\\\",\\n  \\\"type\\\": \\\"commonjs\\\",\\n  \\\"bugs\\\": {\\n    \\\"url\\\": \\\"https://github.com/NateWr/swordv3/issues\\\"\\n  },\\n  \\\"homepage\\\": \\\"https://github.com/NateWr/swordv3#readme\\\",\\n  \\\"devDependencies\\\": {\\n    \\\"@rushstack/eslint-patch\\\": \\\"^1.10.5\\\",\\n    \\\"@vitejs/plugin-vue\\\": \\\"^5.2.1\\\",\\n    \\\"@vue/eslint-config-prettier\\\": \\\"^10.2.0\\\",\\n    \\\"eslint\\\": \\\"^9.20.0\\\",\\n    \\\"eslint-plugin-vue\\\": \\\"^9.32.0\\\",\\n    \\\"prettier\\\": \\\"^3.5.0\\\",\\n    \\\"vite\\\": \\\"^6.1.0\\\"\\n  }\\n}\\n\",\"content_hash\":null,\"content_normalized\":null,\"matcher\":{\"name\":\"npmbower\",\"confidence\":90},\"matched_license\":\"ISC\",\"attribution\":null}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/swordv3.assess.sqaaas/job/main/1/execution/node/70/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/swordv3.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "isc",
+                                        "spdx_id": "ISC",
+                                        "meta": {
+                                            "title": "ISC License",
+                                            "source": "https://spdx.org/licenses/ISC.html",
+                                            "description": "A permissive license lets people do anything with your code with proper attribution and without warranty. The ISC license is functionally equivalent to the <a href=\"/licenses/bsd-2-clause/\">BSD 2-Clause</a> and <a href=\"/licenses/mit/\">MIT</a> licenses, removing some language that is no longer necessary.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Starship": "https://github.com/starship/starship/blob/master/LICENSE",
+                                                "Node.js semver": "https://github.com/npm/node-semver/blob/master/LICENSE",
+                                                "OpenStreetMap iD": "https://github.com/openstreetmap/iD/blob/develop/LICENSE.md"
+                                            },
+                                            "featured": false,
+                                            "hidden": true,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/isc/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "package.json",
+                                        "content": "{\n  \"name\": \"swordv3\",\n  \"version\": \"1.0.0\",\n  \"description\": \"OJS plugin to deposit articles in a SWORDv3 service.\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"dev\": \"vite build --watch --minify=false\",\n    \"build\": \"vite build\",\n    \"lint\": \"eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/NateWr/swordv3.git\"\n  },\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\",\n  \"type\": \"commonjs\",\n  \"bugs\": {\n    \"url\": \"https://github.com/NateWr/swordv3/issues\"\n  },\n  \"homepage\": \"https://github.com/NateWr/swordv3#readme\",\n  \"devDependencies\": {\n    \"@rushstack/eslint-patch\": \"^1.10.5\",\n    \"@vitejs/plugin-vue\": \"^5.2.1\",\n    \"@vue/eslint-config-prettier\": \"^10.2.0\",\n    \"eslint\": \"^9.20.0\",\n    \"eslint-plugin-vue\": \"^9.32.0\",\n    \"prettier\": \"^3.5.0\",\n    \"vite\": \"^6.1.0\"\n  }\n}\n",
+                                        "content_hash": null,
+                                        "content_normalized": null,
+                                        "matcher": {
+                                            "name": "npmbower",
+                                            "confidence": 90
+                                        },
+                                        "matched_license": "ISC",
+                                        "attribution": null
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Lic01.1": {
+                    "description": "Is LICENSE file placed in the root path of the code repository?",
+                    "requirement_level": "MUST",
+                    "hint": "Most social coding platforms require the license file to placed in the root path of the code repository, so it is a good practice to use this location by default. Allowed file names are <code>LICENSE</code>, <code>LICENSE.md</code>, <code>LICENSE.rst</code>, <code>LICENSE.txt</code>",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "LICENSE file is visible at the root path of the code repository: package.json",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic github.com/munipress/swordv3 licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json "
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"isc\",\"spdx_id\":\"ISC\",\"meta\":{\"title\":\"ISC License\",\"source\":\"https://spdx.org/licenses/ISC.html\",\"description\":\"A permissive license lets people do anything with your code with proper attribution and without warranty. The ISC license is functionally equivalent to the <a href=\\\"/licenses/bsd-2-clause/\\\">BSD 2-Clause</a> and <a href=\\\"/licenses/mit/\\\">MIT</a> licenses, removing some language that is no longer necessary.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Starship\":\"https://github.com/starship/starship/blob/master/LICENSE\",\"Node.js semver\":\"https://github.com/npm/node-semver/blob/master/LICENSE\",\"OpenStreetMap iD\":\"https://github.com/openstreetmap/iD/blob/develop/LICENSE.md\"},\"featured\":false,\"hidden\":true,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/isc/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"package.json\",\"content\":\"{\\n  \\\"name\\\": \\\"swordv3\\\",\\n  \\\"version\\\": \\\"1.0.0\\\",\\n  \\\"description\\\": \\\"OJS plugin to deposit articles in a SWORDv3 service.\\\",\\n  \\\"main\\\": \\\"index.js\\\",\\n  \\\"scripts\\\": {\\n    \\\"dev\\\": \\\"vite build --watch --minify=false\\\",\\n    \\\"build\\\": \\\"vite build\\\",\\n    \\\"lint\\\": \\\"eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore\\\"\\n  },\\n  \\\"repository\\\": {\\n    \\\"type\\\": \\\"git\\\",\\n    \\\"url\\\": \\\"git+https://github.com/NateWr/swordv3.git\\\"\\n  },\\n  \\\"keywords\\\": [],\\n  \\\"author\\\": \\\"\\\",\\n  \\\"license\\\": \\\"ISC\\\",\\n  \\\"type\\\": \\\"commonjs\\\",\\n  \\\"bugs\\\": {\\n    \\\"url\\\": \\\"https://github.com/NateWr/swordv3/issues\\\"\\n  },\\n  \\\"homepage\\\": \\\"https://github.com/NateWr/swordv3#readme\\\",\\n  \\\"devDependencies\\\": {\\n    \\\"@rushstack/eslint-patch\\\": \\\"^1.10.5\\\",\\n    \\\"@vitejs/plugin-vue\\\": \\\"^5.2.1\\\",\\n    \\\"@vue/eslint-config-prettier\\\": \\\"^10.2.0\\\",\\n    \\\"eslint\\\": \\\"^9.20.0\\\",\\n    \\\"eslint-plugin-vue\\\": \\\"^9.32.0\\\",\\n    \\\"prettier\\\": \\\"^3.5.0\\\",\\n    \\\"vite\\\": \\\"^6.1.0\\\"\\n  }\\n}\\n\",\"content_hash\":null,\"content_normalized\":null,\"matcher\":{\"name\":\"npmbower\",\"confidence\":90},\"matched_license\":\"ISC\",\"attribution\":null}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/swordv3.assess.sqaaas/job/main/1/execution/node/70/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/swordv3.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "isc",
+                                        "spdx_id": "ISC",
+                                        "meta": {
+                                            "title": "ISC License",
+                                            "source": "https://spdx.org/licenses/ISC.html",
+                                            "description": "A permissive license lets people do anything with your code with proper attribution and without warranty. The ISC license is functionally equivalent to the <a href=\"/licenses/bsd-2-clause/\">BSD 2-Clause</a> and <a href=\"/licenses/mit/\">MIT</a> licenses, removing some language that is no longer necessary.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Starship": "https://github.com/starship/starship/blob/master/LICENSE",
+                                                "Node.js semver": "https://github.com/npm/node-semver/blob/master/LICENSE",
+                                                "OpenStreetMap iD": "https://github.com/openstreetmap/iD/blob/develop/LICENSE.md"
+                                            },
+                                            "featured": false,
+                                            "hidden": true,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/isc/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "package.json",
+                                        "content": "{\n  \"name\": \"swordv3\",\n  \"version\": \"1.0.0\",\n  \"description\": \"OJS plugin to deposit articles in a SWORDv3 service.\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"dev\": \"vite build --watch --minify=false\",\n    \"build\": \"vite build\",\n    \"lint\": \"eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/NateWr/swordv3.git\"\n  },\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\",\n  \"type\": \"commonjs\",\n  \"bugs\": {\n    \"url\": \"https://github.com/NateWr/swordv3/issues\"\n  },\n  \"homepage\": \"https://github.com/NateWr/swordv3#readme\",\n  \"devDependencies\": {\n    \"@rushstack/eslint-patch\": \"^1.10.5\",\n    \"@vitejs/plugin-vue\": \"^5.2.1\",\n    \"@vue/eslint-config-prettier\": \"^10.2.0\",\n    \"eslint\": \"^9.20.0\",\n    \"eslint-plugin-vue\": \"^9.32.0\",\n    \"prettier\": \"^3.5.0\",\n    \"vite\": \"^6.1.0\"\n  }\n}\n",
+                                        "content_hash": null,
+                                        "content_normalized": null,
+                                        "matcher": {
+                                            "name": "npmbower",
+                                            "confidence": 90
+                                        },
+                                        "matched_license": "ISC",
+                                        "attribution": null
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Lic02": {
+                    "description": "Does the code use a license approved by Open Source Initiative?",
+                    "requirement_level": "MUST",
+                    "hint": "The <a href=\"https://opensource.org/\" target=\"_blank\">Open Source Initiative (OSI)</a> sets out the requirements for software to be legally declared as Open Source. The license in use shall be in the list of <a href=\"https://opensource.org/license-list.html\" target=\"_blank\">OSI-approved licenses</a> for this criterion to be successful",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "License ISC is approved by the Open Source Initiative",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic github.com/munipress/swordv3 licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json "
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"isc\",\"spdx_id\":\"ISC\",\"meta\":{\"title\":\"ISC License\",\"source\":\"https://spdx.org/licenses/ISC.html\",\"description\":\"A permissive license lets people do anything with your code with proper attribution and without warranty. The ISC license is functionally equivalent to the <a href=\\\"/licenses/bsd-2-clause/\\\">BSD 2-Clause</a> and <a href=\\\"/licenses/mit/\\\">MIT</a> licenses, removing some language that is no longer necessary.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Starship\":\"https://github.com/starship/starship/blob/master/LICENSE\",\"Node.js semver\":\"https://github.com/npm/node-semver/blob/master/LICENSE\",\"OpenStreetMap iD\":\"https://github.com/openstreetmap/iD/blob/develop/LICENSE.md\"},\"featured\":false,\"hidden\":true,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/isc/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"package.json\",\"content\":\"{\\n  \\\"name\\\": \\\"swordv3\\\",\\n  \\\"version\\\": \\\"1.0.0\\\",\\n  \\\"description\\\": \\\"OJS plugin to deposit articles in a SWORDv3 service.\\\",\\n  \\\"main\\\": \\\"index.js\\\",\\n  \\\"scripts\\\": {\\n    \\\"dev\\\": \\\"vite build --watch --minify=false\\\",\\n    \\\"build\\\": \\\"vite build\\\",\\n    \\\"lint\\\": \\\"eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore\\\"\\n  },\\n  \\\"repository\\\": {\\n    \\\"type\\\": \\\"git\\\",\\n    \\\"url\\\": \\\"git+https://github.com/NateWr/swordv3.git\\\"\\n  },\\n  \\\"keywords\\\": [],\\n  \\\"author\\\": \\\"\\\",\\n  \\\"license\\\": \\\"ISC\\\",\\n  \\\"type\\\": \\\"commonjs\\\",\\n  \\\"bugs\\\": {\\n    \\\"url\\\": \\\"https://github.com/NateWr/swordv3/issues\\\"\\n  },\\n  \\\"homepage\\\": \\\"https://github.com/NateWr/swordv3#readme\\\",\\n  \\\"devDependencies\\\": {\\n    \\\"@rushstack/eslint-patch\\\": \\\"^1.10.5\\\",\\n    \\\"@vitejs/plugin-vue\\\": \\\"^5.2.1\\\",\\n    \\\"@vue/eslint-config-prettier\\\": \\\"^10.2.0\\\",\\n    \\\"eslint\\\": \\\"^9.20.0\\\",\\n    \\\"eslint-plugin-vue\\\": \\\"^9.32.0\\\",\\n    \\\"prettier\\\": \\\"^3.5.0\\\",\\n    \\\"vite\\\": \\\"^6.1.0\\\"\\n  }\\n}\\n\",\"content_hash\":null,\"content_normalized\":null,\"matcher\":{\"name\":\"npmbower\",\"confidence\":90},\"matched_license\":\"ISC\",\"attribution\":null}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/swordv3.assess.sqaaas/job/main/1/execution/node/70/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/swordv3.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "isc",
+                                        "spdx_id": "ISC",
+                                        "meta": {
+                                            "title": "ISC License",
+                                            "source": "https://spdx.org/licenses/ISC.html",
+                                            "description": "A permissive license lets people do anything with your code with proper attribution and without warranty. The ISC license is functionally equivalent to the <a href=\"/licenses/bsd-2-clause/\">BSD 2-Clause</a> and <a href=\"/licenses/mit/\">MIT</a> licenses, removing some language that is no longer necessary.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Starship": "https://github.com/starship/starship/blob/master/LICENSE",
+                                                "Node.js semver": "https://github.com/npm/node-semver/blob/master/LICENSE",
+                                                "OpenStreetMap iD": "https://github.com/openstreetmap/iD/blob/develop/LICENSE.md"
+                                            },
+                                            "featured": false,
+                                            "hidden": true,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/isc/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "package.json",
+                                        "content": "{\n  \"name\": \"swordv3\",\n  \"version\": \"1.0.0\",\n  \"description\": \"OJS plugin to deposit articles in a SWORDv3 service.\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"dev\": \"vite build --watch --minify=false\",\n    \"build\": \"vite build\",\n    \"lint\": \"eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/NateWr/swordv3.git\"\n  },\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\",\n  \"type\": \"commonjs\",\n  \"bugs\": {\n    \"url\": \"https://github.com/NateWr/swordv3/issues\"\n  },\n  \"homepage\": \"https://github.com/NateWr/swordv3#readme\",\n  \"devDependencies\": {\n    \"@rushstack/eslint-patch\": \"^1.10.5\",\n    \"@vitejs/plugin-vue\": \"^5.2.1\",\n    \"@vue/eslint-config-prettier\": \"^10.2.0\",\n    \"eslint\": \"^9.20.0\",\n    \"eslint-plugin-vue\": \"^9.32.0\",\n    \"prettier\": \"^3.5.0\",\n    \"vite\": \"^6.1.0\"\n  }\n}\n",
+                                        "content_hash": null,
+                                        "content_normalized": null,
+                                        "matcher": {
+                                            "name": "npmbower",
+                                            "confidence": 90
+                                        },
+                                        "matched_license": "ISC",
+                                        "attribution": null
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Lic02.1": {
+                    "description": "Does the code use an Open Source Initiative's popular-recognized license?",
+                    "requirement_level": "MAY",
+                    "hint": "The Open Source Initiative (OSI) sets out the requirements for software to be legally declared as Open Source. OSI provides a list of popular licenses that shall match most of the demands. The license in use shall be in the list of <a href=\"https://opensource.org/license-list.html\" target=\"_blank\">OSI popular licenses</a> for this criterion to be successful",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "License ISC is listed under the Open Source Initiative popular category",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic github.com/munipress/swordv3 licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json "
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"isc\",\"spdx_id\":\"ISC\",\"meta\":{\"title\":\"ISC License\",\"source\":\"https://spdx.org/licenses/ISC.html\",\"description\":\"A permissive license lets people do anything with your code with proper attribution and without warranty. The ISC license is functionally equivalent to the <a href=\\\"/licenses/bsd-2-clause/\\\">BSD 2-Clause</a> and <a href=\\\"/licenses/mit/\\\">MIT</a> licenses, removing some language that is no longer necessary.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Starship\":\"https://github.com/starship/starship/blob/master/LICENSE\",\"Node.js semver\":\"https://github.com/npm/node-semver/blob/master/LICENSE\",\"OpenStreetMap iD\":\"https://github.com/openstreetmap/iD/blob/develop/LICENSE.md\"},\"featured\":false,\"hidden\":true,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/isc/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"package.json\",\"content\":\"{\\n  \\\"name\\\": \\\"swordv3\\\",\\n  \\\"version\\\": \\\"1.0.0\\\",\\n  \\\"description\\\": \\\"OJS plugin to deposit articles in a SWORDv3 service.\\\",\\n  \\\"main\\\": \\\"index.js\\\",\\n  \\\"scripts\\\": {\\n    \\\"dev\\\": \\\"vite build --watch --minify=false\\\",\\n    \\\"build\\\": \\\"vite build\\\",\\n    \\\"lint\\\": \\\"eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore\\\"\\n  },\\n  \\\"repository\\\": {\\n    \\\"type\\\": \\\"git\\\",\\n    \\\"url\\\": \\\"git+https://github.com/NateWr/swordv3.git\\\"\\n  },\\n  \\\"keywords\\\": [],\\n  \\\"author\\\": \\\"\\\",\\n  \\\"license\\\": \\\"ISC\\\",\\n  \\\"type\\\": \\\"commonjs\\\",\\n  \\\"bugs\\\": {\\n    \\\"url\\\": \\\"https://github.com/NateWr/swordv3/issues\\\"\\n  },\\n  \\\"homepage\\\": \\\"https://github.com/NateWr/swordv3#readme\\\",\\n  \\\"devDependencies\\\": {\\n    \\\"@rushstack/eslint-patch\\\": \\\"^1.10.5\\\",\\n    \\\"@vitejs/plugin-vue\\\": \\\"^5.2.1\\\",\\n    \\\"@vue/eslint-config-prettier\\\": \\\"^10.2.0\\\",\\n    \\\"eslint\\\": \\\"^9.20.0\\\",\\n    \\\"eslint-plugin-vue\\\": \\\"^9.32.0\\\",\\n    \\\"prettier\\\": \\\"^3.5.0\\\",\\n    \\\"vite\\\": \\\"^6.1.0\\\"\\n  }\\n}\\n\",\"content_hash\":null,\"content_normalized\":null,\"matcher\":{\"name\":\"npmbower\",\"confidence\":90},\"matched_license\":\"ISC\",\"attribution\":null}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/swordv3.assess.sqaaas/job/main/1/execution/node/70/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/swordv3.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "isc",
+                                        "spdx_id": "ISC",
+                                        "meta": {
+                                            "title": "ISC License",
+                                            "source": "https://spdx.org/licenses/ISC.html",
+                                            "description": "A permissive license lets people do anything with your code with proper attribution and without warranty. The ISC license is functionally equivalent to the <a href=\"/licenses/bsd-2-clause/\">BSD 2-Clause</a> and <a href=\"/licenses/mit/\">MIT</a> licenses, removing some language that is no longer necessary.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Starship": "https://github.com/starship/starship/blob/master/LICENSE",
+                                                "Node.js semver": "https://github.com/npm/node-semver/blob/master/LICENSE",
+                                                "OpenStreetMap iD": "https://github.com/openstreetmap/iD/blob/develop/LICENSE.md"
+                                            },
+                                            "featured": false,
+                                            "hidden": true,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/isc/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "package.json",
+                                        "content": "{\n  \"name\": \"swordv3\",\n  \"version\": \"1.0.0\",\n  \"description\": \"OJS plugin to deposit articles in a SWORDv3 service.\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"dev\": \"vite build --watch --minify=false\",\n    \"build\": \"vite build\",\n    \"lint\": \"eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/NateWr/swordv3.git\"\n  },\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\",\n  \"type\": \"commonjs\",\n  \"bugs\": {\n    \"url\": \"https://github.com/NateWr/swordv3/issues\"\n  },\n  \"homepage\": \"https://github.com/NateWr/swordv3#readme\",\n  \"devDependencies\": {\n    \"@rushstack/eslint-patch\": \"^1.10.5\",\n    \"@vitejs/plugin-vue\": \"^5.2.1\",\n    \"@vue/eslint-config-prettier\": \"^10.2.0\",\n    \"eslint\": \"^9.20.0\",\n    \"eslint-plugin-vue\": \"^9.32.0\",\n    \"prettier\": \"^3.5.0\",\n    \"vite\": \"^6.1.0\"\n  }\n}\n",
+                                        "content_hash": null,
+                                        "content_normalized": null,
+                                        "matcher": {
+                                            "name": "npmbower",
+                                            "confidence": 90
+                                        },
+                                        "matched_license": "ISC",
+                                        "attribution": null
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 4,
+                "success_subcriteria": 4
+            }
+        },
+        "QC.Sty": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Sty01": {
+                    "description": "Is the software product following a style standard for JSON files?",
+                    "requirement_level": "MUST",
+                    "hint": "Please check & solve the security weaknesses found by the linter tool",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "JSON files are compliant with jsonlint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-jenkins_exit_status",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "jsonlint",
+                                "lang": "JSON",
+                                "version": "1.6.3",
+                                "docker": {
+                                    "dockerfile": "QC.Sty/jsonlint/Dockerfile",
+                                    "reviewed": "2021-11-23"
+                                },
+                                "ci": {
+                                    "name": "QC.Sty github.com/munipress/swordv3 jsonlint",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "jsonlint-cli \"**/*.json\""
+                                    ],
+                                    "stdout_text": "",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/swordv3.assess.sqaaas/job/main/1/execution/node/79/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/swordv3.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 1,
+                "success_subcriteria": 1
+            }
+        },
+        "QC.Ver": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Ver01.0": {
+                    "description": "Are tags being used for releasing software",
+                    "requirement_level": "MUST",
+                    "hint": "Git tags are a convenient way to release software. This subcriterion checks if any git tag is present in the code history. More info on it-scm.com/book/en/v2/Git-Basics-Tagging\" target=\"_blank\">git tagging</a>",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "The code repository does not use tags for releasing new software versions",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver github.com/munipress/swordv3 get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "[]",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/swordv3.assess.sqaaas/job/main/1/execution/node/88/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/swordv3.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": []
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                },
+                "QC.Ver01": {
+                    "description": "Is the latest release compliant with Semantic Versioning (SemVer) specification?",
+                    "requirement_level": "SHOULD",
+                    "hint": "Latest tag must be compliant with <a href=\"https://semver.org\" target=\"_blank\">SemVer specification</a>",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Latest release tag None found, but is not SemVer compliant",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver github.com/munipress/swordv3 get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "[]",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/swordv3.assess.sqaaas/job/main/1/execution/node/88/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/swordv3.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": []
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                },
+                "QC.Ver02": {
+                    "description": "Are all release tags with Semantic Versioning (SemVer) specification?",
+                    "requirement_level": "SHOULD",
+                    "hint": "Existent release tags shall be <a href=\"https://semver.org\" target=\"_blank\">SemVer</a> compliant for this subcriterion to be successful",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "All release tags are SemVer compliant",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver github.com/munipress/swordv3 get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "[]",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/swordv3.assess.sqaaas/job/main/1/execution/node/88/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/swordv3.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": []
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 33,
+                "total_subcriteria": 3,
+                "success_subcriteria": 1
+            }
+        },
+        "QC.Met": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Met01": {
+                    "description": "Is the software citable?",
+                    "valid": false,
+                    "hint": "The two formats for software citation supported by SQAaaS are: 1) <a href=\"https://codemeta.github.io/\" target=\"_blank\">CodeMeta</a> and 2) <a href=\"https://citation-file-format.github.io/\" target=\"_blank\">Citation File Format (CFF)</a>. While CodeMeta provides you with a more comprehensive description, CFF is a more lightweight, good-enough approach to software (with built-in support by GitHub) citation. Both provide tools (<a href=\"https://codemeta.github.io/codemeta-generator/\" target=\"_blank\">CodeMeta generator</a>, <a href=\"https://citation-file-format.github.io/cff-initializer-javascript/#/\" target=\"_blank\">CFFINIT</a>)to easily generate a working citation file. Once having the file, be sure to add it to the root path of your code repo.",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "No matching files found for language <CodeMeta> in repository searching by extensions or filenames\nNo matching files found for language <Citation File Format> in repository searching by extensions or filenames"
+                        }
+                    ],
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        },
+        "QC.Sec": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Sec02": {
+                    "description": "Is the source code passing Static Analysis Security Testing (SAST)?",
+                    "valid": false,
+                    "hint": "Please check & solve the security weaknesses found by the SAST tool",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "No matching files found for language <Python> in repository searching by extensions or filenames\nNo matching files found for language <Go> in repository searching by extensions or filenames"
+                        }
+                    ],
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        },
+        "QC.Uni": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Uni01": {
+                    "description": "Are the tests passing through an automated means?",
+                    "valid": false,
+                    "hint": "Please check & solve the failing test cases found by the {tool_name} tool",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "No matching files found for language <Python> in repository searching by extensions or filenames"
+                        }
+                    ],
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        }
+    },
+    "badge": {
+        "software": {
+            "criteria": {
+                "bronze": {
+                    "to_fulfill": [
+                        "QC.Lic",
+                        "QC.Doc",
+                        "QC.Acc"
+                    ],
+                    "missing": [
+                        "QC.Doc"
+                    ],
+                    "fulfilled": [
+                        "QC.Lic",
+                        "QC.Acc"
+                    ]
+                },
+                "silver": {
+                    "to_fulfill": [
+                        "QC.Met",
+                        "QC.Ver",
+                        "QC.Acc",
+                        "QC.Doc",
+                        "QC.Lic"
+                    ],
+                    "missing": [
+                        "QC.Met",
+                        "QC.Ver",
+                        "QC.Doc"
+                    ],
+                    "fulfilled": [
+                        "QC.Lic",
+                        "QC.Acc"
+                    ]
+                },
+                "gold": {
+                    "to_fulfill": [
+                        "QC.Sty",
+                        "QC.Met",
+                        "QC.Ver",
+                        "QC.Acc",
+                        "QC.Sec",
+                        "QC.Uni",
+                        "QC.Doc",
+                        "QC.Lic"
+                    ],
+                    "missing": [
+                        "QC.Met",
+                        "QC.Sec",
+                        "QC.Ver",
+                        "QC.Uni",
+                        "QC.Doc"
+                    ],
+                    "fulfilled": [
+                        "QC.Sty",
+                        "QC.Lic",
+                        "QC.Acc"
+                    ]
+                }
+            },
+            "data": {}
+        }
+    }
+}
