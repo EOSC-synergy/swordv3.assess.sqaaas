@@ -1,0 +1,52 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: fix/updatego
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/munipress/swordv3:
+      branch: main
+      repo: https://github.com/munipress/swordv3
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/munipress/swordv3 git:
+        commands:
+        - /usr/bin/env sh .sqa/script.ruby_funny_chameleon.sh
+        container: qc.acc_maroon_energetic_otter
+  QC.Doc:
+    repos:
+      github.com/munipress/swordv3 find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.aqua_harmonious_vulture.sh
+        container: qc.doc_butterscotch_stubborn_orangutan
+      github.com/munipress/swordv3 git:
+        commands:
+        - /usr/bin/env sh .sqa/script.mauve_skeptical_dolphin.sh
+        container: qc.doc_cherry_kind_caribou
+      github.com/munipress/swordv3 markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.lilac_trustworthy_turkey.sh
+        container: qc.doc_polar_inventive_kangaroo
+  QC.Lic:
+    repos:
+      github.com/munipress/swordv3 licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.prussian_protective_boar.sh
+        container: qc.lic_scarlet_playful_butterfly
+  QC.Sty:
+    repos:
+      github.com/munipress/swordv3 jsonlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.glacier_tough_walrus.sh
+        container: qc.sty_pineapple_articulate_baboon
+  QC.Ver:
+    repos:
+      github.com/munipress/swordv3 get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.cinnamon_forgiving_iguana.sh
+        container: qc.ver_byzantium_artistic_stingray
+timeout: 5400
